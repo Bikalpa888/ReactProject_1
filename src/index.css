@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --c-white:     #FFFFFF;
+  --c-off-white: #F8F9FA;
+  --c-dark:      #1F2937;
+  --c-silver:    #6B7280;
+  --c-accent:    #D4AF37;
+  --shadow-card: 0 1px 3px rgba(31,41,55,0.04), 0 4px 18px rgba(31,41,55,0.08);
+  --shadow-hover: 0 4px 24px rgba(31,41,55,0.13);
+}
+
+html { height: 100%; }
+
+body {
+  min-height: 100%;
+  background: var(--c-white);
+  color: var(--c-dark);
+}
+
+/* ══════════════════════════════════════════════
+   CARD  (replaces glass morphism)
+   ══════════════════════════════════════════════ */
+.liquid-glass {
+  position: relative;
+  background: var(--c-white);
+  border: 1px solid rgba(31, 41, 55, 0.07);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* kill the old pseudo-element layers */
+.liquid-glass::before,
+.liquid-glass::after { display: none; }
+
+.glass-content { position: relative; z-index: 1; }
+
+/* ── Header ── */
+header.liquid-glass {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+.glass-header {
+  border-bottom: 1px solid rgba(31, 41, 55, 0.08);
+  box-shadow: 0 1px 8px rgba(31, 41, 55, 0.06);
+}
+
+/* ── Footer ── */
+footer.liquid-glass {
+  background: var(--c-off-white);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+.glass-footer { border-top: 1px solid rgba(31, 41, 55, 0.08); }
+
+/* ── Input pill ── */
+.glass-input {
+  background: var(--c-off-white);
+  border: 1.5px solid rgba(31, 41, 55, 0.10);
+  border-radius: 50px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.glass-input:focus-within {
+  background: var(--c-white);
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.10);
+}
+
+/* ══════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════ */
+
+/* Primary — charcoal bg, white text → hover gold */
+.glass-btn {
+  position: relative;
+  background: var(--c-dark);
+  color: #FFFFFF;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+.glass-btn:hover {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.22);
+}
+
+/* Light — white bg, dark text → hover gold (for dark-bg sections) */
+.btn-light {
+  background: var(--c-white);
+  color: var(--c-dark);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-light:hover {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.28);
+}
+
+/* Ghost — for dark-bg sections */
+.btn-ghost {
+  background: transparent;
+  color: rgba(248, 249, 250, 0.75);
+  border: 1.5px solid rgba(248, 249, 250, 0.28);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-ghost:hover {
+  background: rgba(248, 249, 250, 0.09);
+  color: #F8F9FA;
+  border-color: rgba(248, 249, 250, 0.50);
+  transform: translateY(-2px);
+}
+
+/* Secondary — for light-bg sections */
+.btn-secondary {
+  background: transparent;
+  color: var(--c-dark);
+  border: 1.5px solid rgba(31, 41, 55, 0.22);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, transform 0.2s ease;
+}
+.btn-secondary:hover {
+  background: var(--c-dark);
+  color: #FFFFFF;
+  border-color: var(--c-dark);
+  transform: translateY(-2px);
+}
+
+/* Icon / nav buttons */
+.glass-action-btn {
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.glass-action-btn:hover { background: rgba(31, 41, 55, 0.06); }
+
+/* ══════════════════════════════════════════════
+   SCROLL REVEAL
+   ══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero scroll hint ── */
+@keyframes scroll-nudge {
+  0%, 100% { transform: translateY(0);  opacity: 0.45; }
+  50%       { transform: translateY(5px); opacity: 0.80; }
+}
+.scroll-hint { animation: scroll-nudge 2.8s ease-in-out infinite; }

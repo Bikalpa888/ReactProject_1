@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let cars = ["HONDA", "BMW", "TOYOTA"]
+
+        const addCar = newCar => {
+            cars.push(newCar)
+        }
+
+        const displayCars = () => {
+            document.write("<br>Cars: ", cars)
+        }
+
+        // displayCars()
+        // addCar("MERCEDES")
+        // displayCars()
+        // addCar("FORD")
+        // displayCars()
+
+        const addCar_async = (newCar) => {
+            setTimeout(() => {
+                cars.push(newCar)
+            }, 2000);
+        }
+        const display_async = () => {
+            setTimeout(() => {
+                document.write("<br>Cars: ", cars)
+            }, 3000);
+        }
+
+        // display_async()
+        // addCar_async("MERCEDES")
+        // display_async()
+        // addCar_async("FORD")
+        // display_async()
+
+        // 1. callback - pass the second function to first function.
+
+        const addCar_callback = (newCar, callback) => {
+            setTimeout(() => {
+                cars.push(newCar)
+                callback()
+            }, 2000);
+        }
+        display_async()
+        addCar_callback("MERCEDES", display_async)
+        addCar_callback("BYD", display_async)
+
+
+
+        // 2. promise- then, catch
+        // 3. async/await
+        const addCar_promise = (newCar) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    cars.push(newCar)
+                    resolve()
+                }, 2000);
+            })
+        }
+        addCar_promise("SUZUKI").then(display_async)
+        addCar_promise("BYD").then(display_async)
+        .catch(() => {
+            document.write("<br>something went wrong: ")
+        })
+
+        const display_async_await = async () => {
+            await addCar_promise("Porsche")
+            display_async()
+            document.write("<br>Cars: ", cars)
+        }
+
+        const demoFunction = async()=>{
+            try {
+                await addCar_promise("Porsche")
+                display_async()
+                
+            } catch (error) {
+                document.write("<br>something went wrong: ")
+        }
+        }
+
+        demoFunction()
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vite *)",
+      "Bash(node -e \"const gi = require\\('/Users/billybikku/Documents/React_1/react_vite_1/node_modules/react-icons/gi'\\); const keys = Object.keys\\(gi\\); keys.filter\\(k => k.toLowerCase\\(\\).includes\\('car'\\) || k.toLowerCase\\(\\).includes\\('engine'\\) || k.toLowerCase\\(\\).includes\\('wheel'\\) || k.toLowerCase\\(\\).includes\\('piston'\\) || k.toLowerCase\\(\\).includes\\('speed'\\)\\).slice\\(0,20\\).forEach\\(k => console.log\\(k\\)\\)\")",
+      "Bash(node -e \"const gi = require\\('/Users/billybikku/Documents/React_1/react_vite_1/node_modules/react-icons/gi'\\); Object.keys\\(gi\\).filter\\(k => k.toLowerCase\\(\\).includes\\('wrench'\\) || k.toLowerCase\\(\\).includes\\('gear'\\) || k.toLowerCase\\(\\).includes\\('tool'\\) || k.toLowerCase\\(\\).includes\\('turbo'\\) || k.toLowerCase\\(\\).includes\\('mecha'\\)\\).slice\\(0,20\\).forEach\\(k => console.log\\(k\\)\\)\")"
+    ]
+  }
+}
