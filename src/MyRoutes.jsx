@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import Third from './Third'
 import Second from './Second'
 import LetConstVar from './Pages/LetConstVar'
@@ -13,7 +13,7 @@ import Contact from './Pages/Contact'
 
 const MyRoutes = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path='/'          element={<Home />} />
@@ -30,7 +30,7 @@ const MyRoutes = () => {
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
