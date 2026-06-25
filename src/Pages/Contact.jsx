@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { BsEnvelopeFill, BsTelephoneFill, BsGeoAltFill, BsClock } from 'react-icons/bs'
 import useReveal from '../hooks/useReveal'
 
@@ -41,19 +41,19 @@ export default function Contact() {
   }
 
   return (
-    <div style={{ background: '#FFFFFF' }}>
+    <div style={{ background: 'var(--c-white)' }}>
 
       {/* ══ HERO BANNER ══ */}
       <div className="px-4 sm:px-6 lg:px-8 pt-24 pb-10 text-center reveal">
         <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-4"
-          style={{ color: '#D4AF37' }}>
+          style={{ color: 'var(--c-accent)' }}>
           We'd Love to Hear From You
         </p>
         <h1 className="font-black leading-tight mb-4"
-          style={{ fontSize: 'clamp(2rem, 4.5vw, 3rem)', color: '#1F2937' }}>
+          style={{ fontSize: 'clamp(2rem, 4.5vw, 3rem)', color: 'var(--c-dark)' }}>
           Contact Us
         </h1>
-        <div className="w-10 h-0.5 rounded-full mx-auto" style={{ background: '#D4AF37' }} />
+        <div className="w-10 h-0.5 rounded-full mx-auto" style={{ background: 'var(--c-accent)' }} />
       </div>
 
       {/* ══ ADDRESS + FORM ══ */}
@@ -63,10 +63,10 @@ export default function Contact() {
           {/* ── LEFT: contact info ── */}
           <div className="space-y-8 reveal">
             <div>
-              <h2 className="text-2xl font-bold mb-2" style={{ color: '#1F2937' }}>
+              <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--c-dark)' }}>
                 Get in Touch
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--c-silver)' }}>
                 Have a question about a part, an order, or just want to talk shop?
                 Reach out — our team responds within one business day.
               </p>
@@ -76,16 +76,16 @@ export default function Contact() {
               {INFO.map(({ icon: Icon, label, lines }) => (
                 <div key={label} className="flex gap-4">
                   <div className="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
-                    style={{ background: 'rgba(212,175,55,0.10)' }}>
-                    <Icon style={{ color: '#D4AF37', fontSize: '1.1rem' }} />
+                    style={{ background: 'var(--c-accent-soft)' }}>
+                    <Icon style={{ color: 'var(--c-accent)', fontSize: '1.1rem' }} />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest font-semibold mb-1"
-                      style={{ color: '#D4AF37' }}>
+                      style={{ color: 'var(--c-accent)' }}>
                       {label}
                     </p>
                     {lines.map(l => (
-                      <p key={l} className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
+                      <p key={l} className="text-sm leading-relaxed" style={{ color: 'var(--c-silver)' }}>
                         {l}
                       </p>
                     ))}
@@ -100,11 +100,11 @@ export default function Contact() {
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center py-16 text-center gap-4">
                 <div className="w-14 h-14 rounded-full flex items-center justify-center mb-2"
-                  style={{ background: 'rgba(212,175,55,0.12)' }}>
-                  <span style={{ color: '#D4AF37', fontSize: '1.75rem' }}>✓</span>
+                  style={{ background: 'var(--c-accent-soft)' }}>
+                  <span style={{ color: 'var(--c-accent)', fontSize: '1.75rem' }}>✓</span>
                 </div>
-                <h3 className="text-xl font-bold" style={{ color: '#1F2937' }}>Message Sent!</h3>
-                <p className="text-sm" style={{ color: '#6B7280' }}>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--c-dark)' }}>Message Sent!</h3>
+                <p className="text-sm" style={{ color: 'var(--c-silver)' }}>
                   We'll get back to you within one business day.
                 </p>
                 <button
@@ -115,14 +115,14 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={submit} className="space-y-5">
-                <h3 className="text-lg font-bold mb-6" style={{ color: '#1F2937' }}>
+                <h3 className="text-lg font-bold mb-6" style={{ color: 'var(--c-dark)' }}>
                   Send a Message
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5"
-                      style={{ color: '#6B7280' }}>
+                      style={{ color: 'var(--c-silver)' }}>
                       Name
                     </label>
                     <input
@@ -134,23 +134,23 @@ export default function Contact() {
                       placeholder="John Doe"
                       className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
                       style={{
-                        background: '#F8F9FA',
-                        border: '1.5px solid rgba(31,41,55,0.10)',
-                        color: '#1F2937',
+                        background: 'var(--c-off-white)',
+                        border: '1.5px solid var(--c-input-border)',
+                        color: 'var(--c-dark)',
                       }}
                       onFocus={e => {
-                        e.target.style.borderColor = '#D4AF37'
+                        e.target.style.borderColor = 'var(--c-accent)'
                         e.target.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.10)'
                       }}
                       onBlur={e => {
-                        e.target.style.borderColor = 'rgba(31,41,55,0.10)'
+                        e.target.style.borderColor = 'var(--c-input-border)'
                         e.target.style.boxShadow = 'none'
                       }}
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5"
-                      style={{ color: '#6B7280' }}>
+                      style={{ color: 'var(--c-silver)' }}>
                       Email
                     </label>
                     <input
@@ -162,16 +162,16 @@ export default function Contact() {
                       placeholder="john@example.com"
                       className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
                       style={{
-                        background: '#F8F9FA',
-                        border: '1.5px solid rgba(31,41,55,0.10)',
-                        color: '#1F2937',
+                        background: 'var(--c-off-white)',
+                        border: '1.5px solid var(--c-input-border)',
+                        color: 'var(--c-dark)',
                       }}
                       onFocus={e => {
-                        e.target.style.borderColor = '#D4AF37'
+                        e.target.style.borderColor = 'var(--c-accent)'
                         e.target.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.10)'
                       }}
                       onBlur={e => {
-                        e.target.style.borderColor = 'rgba(31,41,55,0.10)'
+                        e.target.style.borderColor = 'var(--c-input-border)'
                         e.target.style.boxShadow = 'none'
                       }}
                     />
@@ -180,7 +180,7 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5"
-                    style={{ color: '#6B7280' }}>
+                    style={{ color: 'var(--c-silver)' }}>
                     Subject
                   </label>
                   <input
@@ -192,16 +192,16 @@ export default function Contact() {
                     placeholder="Order inquiry, Part availability…"
                     className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all"
                     style={{
-                      background: '#F8F9FA',
-                      border: '1.5px solid rgba(31,41,55,0.10)',
-                      color: '#1F2937',
+                      background: 'var(--c-off-white)',
+                      border: '1.5px solid var(--c-input-border)',
+                      color: 'var(--c-dark)',
                     }}
                     onFocus={e => {
-                      e.target.style.borderColor = '#D4AF37'
+                      e.target.style.borderColor = 'var(--c-accent)'
                       e.target.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.10)'
                     }}
                     onBlur={e => {
-                      e.target.style.borderColor = 'rgba(31,41,55,0.10)'
+                      e.target.style.borderColor = 'var(--c-input-border)'
                       e.target.style.boxShadow = 'none'
                     }}
                   />
@@ -209,7 +209,7 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-widest mb-1.5"
-                    style={{ color: '#6B7280' }}>
+                    style={{ color: 'var(--c-silver)' }}>
                     Message
                   </label>
                   <textarea
@@ -221,16 +221,16 @@ export default function Contact() {
                     placeholder="Tell us what's on your mind…"
                     className="w-full rounded-xl px-4 py-3 text-sm outline-none transition-all resize-none"
                     style={{
-                      background: '#F8F9FA',
-                      border: '1.5px solid rgba(31,41,55,0.10)',
-                      color: '#1F2937',
+                      background: 'var(--c-off-white)',
+                      border: '1.5px solid var(--c-input-border)',
+                      color: 'var(--c-dark)',
                     }}
                     onFocus={e => {
-                      e.target.style.borderColor = '#D4AF37'
+                      e.target.style.borderColor = 'var(--c-accent)'
                       e.target.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.10)'
                     }}
                     onBlur={e => {
-                      e.target.style.borderColor = 'rgba(31,41,55,0.10)'
+                      e.target.style.borderColor = 'var(--c-input-border)'
                       e.target.style.boxShadow = 'none'
                     }}
                   />
@@ -249,10 +249,10 @@ export default function Contact() {
 
       {/* ══ GOOGLE MAP ══ */}
       <div className="w-full reveal" style={{ transitionDelay: '0.2s' }}>
-        <div className="border-t" style={{ borderColor: 'rgba(31,41,55,0.08)' }} />
+        <div className="border-t" style={{ borderColor: 'var(--c-border)' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <p className="text-base uppercase tracking-[0.35em] font-semibold mb-4 text-center"
-            style={{ color: '#D4AF37' }}>
+            style={{ color: 'var(--c-accent)' }}>
             Find Us
           </p>
         </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { GiSpeedometer, GiGears, GiRaceCar, GiMechanicGarage } from 'react-icons/gi'
 import { BsTools, BsHeadset } from 'react-icons/bs'
 import useReveal from '../hooks/useReveal'
@@ -40,21 +39,21 @@ export default function Services() {
   useReveal()
 
   return (
-    <div style={{ background: '#FFFFFF' }}>
+    <div style={{ background: 'var(--c-white)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 
         {/* ── PAGE HEADER ── */}
         <div className="text-center mb-16 reveal">
           <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-4"
-            style={{ color: '#D4AF37' }}>
+            style={{ color: 'var(--c-accent)' }}>
             What We Offer
           </p>
           <h1 className="font-black leading-tight mb-4"
-            style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', color: '#1F2937' }}>
+            style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', color: 'var(--c-dark)' }}>
             Our Services
           </h1>
           <p className="text-base max-w-xl mx-auto leading-relaxed"
-            style={{ color: '#6B7280' }}>
+            style={{ color: 'var(--c-silver)' }}>
             From bolt-on upgrades to full track builds — everything your car needs,
             handled by people who actually love cars.
           </p>
@@ -86,20 +85,20 @@ export default function Services() {
                   className="w-20 h-20 rounded-2xl flex items-center justify-center mb-6
                              transition-transform duration-300 group-hover:scale-105"
                   style={{
-                    background: 'rgba(212,175,55,0.09)',
-                    border: '1px solid rgba(212,175,55,0.22)',
+                    background: 'var(--c-accent-soft)',
+                    border: '1px solid var(--c-accent-border)',
                   }}
                 >
-                  <Icon style={{ color: '#D4AF37', fontSize: '2.2rem' }} />
+                  <Icon style={{ color: 'var(--c-accent)', fontSize: '2.2rem' }} />
                 </div>
 
-                <h3 className="font-bold text-lg mb-3" style={{ color: '#1F2937' }}>{title}</h3>
+                <h3 className="font-bold text-lg mb-3" style={{ color: 'var(--c-dark)' }}>{title}</h3>
 
                 {/* Gold divider */}
                 <div className="w-8 h-0.5 rounded-full mb-4"
-                  style={{ background: '#D4AF37' }} />
+                  style={{ background: 'var(--c-accent)' }} />
 
-                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--c-silver)' }}>{desc}</p>
 
               </div>
             </div>

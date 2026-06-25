@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { BsCart, BsPersonPlus, BsSearch } from 'react-icons/bs'
+import { BsCart, BsMoonStars, BsPersonPlus, BsSearch, BsSun } from 'react-icons/bs'
 import { RiLoginBoxFill } from 'react-icons/ri'
+import { MyThemeContext } from '../hooks/MyThemeContext'
 
 const navLinks = [
   { to: '/',         label: 'Home'     },
@@ -11,6 +12,7 @@ const navLinks = [
 ]
 
 const Header = () => {
+  const { theme, toggleTheme } = useContext(MyThemeContext)
   const [searchOpen, setSearchOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const inputRef = useRef(null)
@@ -35,12 +37,8 @@ const Header = () => {
     <header
       className="liquid-glass glass-header sticky top-0 z-50"
       style={{
-        boxShadow: scrolled
-          ? '0 2px 20px rgba(31,41,55,0.13), 0 1px 4px rgba(31,41,55,0.08)'
-          : '0 1px 8px rgba(31,41,55,0.06)',
-        borderBottom: scrolled
-          ? '1px solid rgba(31,41,55,0.14)'
-          : '1px solid rgba(31,41,55,0.08)',
+        boxShadow: scrolled ? 'var(--shadow-header-scrolled)' : 'var(--shadow-header)',
+        borderBottom: scrolled ? '1px solid var(--c-border-strong)' : '1px solid var(--c-border)',
         transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
@@ -50,8 +48,8 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="shrink-0 select-none">
             <span className="text-xl font-extrabold tracking-widest"
-              style={{ color: '#1F2937' }}>
-              LETS<span style={{ color: '#D4AF37' }}>RACE</span>
+              style={{ color: 'var(--c-dark)' }}>
+              LETS<span style={{ color: 'var(--c-accent)' }}>RACE</span>
             </span>
           </Link>
 
@@ -59,13 +57,13 @@ const Header = () => {
           <div
             className="flex items-center rounded-full overflow-hidden shrink-0"
             style={{
-              background: '#F8F9FA',
-              border: `1.5px solid ${searchOpen ? '#D4AF37' : 'rgba(31,41,55,0.10)'}`,
+              background: 'var(--c-off-white)',
+              border: `1.5px solid ${searchOpen ? 'var(--c-accent)' : 'var(--c-input-border)'}`,
               boxShadow: searchOpen ? '0 0 0 3px rgba(212,175,55,0.10)' : 'none',
               width: searchOpen ? '220px' : '130px',
               transition: 'width 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease',
             }}>
-            <BsSearch className="ml-3 shrink-0 text-xs" style={{ color: searchOpen ? '#D4AF37' : 'rgba(107,114,128,0.6)' }} />
+            <BsSearch className="ml-3 shrink-0 text-xs" style={{ color: searchOpen ? 'var(--c-accent)' : 'var(--c-muted)' }} />
             <input
               ref={inputRef}
               type="search"
@@ -73,7 +71,7 @@ const Header = () => {
               onFocus={() => setSearchOpen(true)}
               onBlur={() => setSearchOpen(false)}
               className="flex-1 bg-transparent px-2 py-1.5 text-xs outline-none"
-              style={{ color: '#1F2937' }}
+              style={{ color: 'var(--c-dark)' }}
             />
           </div>
 
@@ -85,11 +83,7 @@ const Header = () => {
                 to={to}
                 end
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? 'text-[#D4AF37]'
-                      : 'text-[#6B7280] hover:text-[#1F2937]'
-                  }`
+                  `theme-nav-link text-sm font-medium transition-colors duration-200 ${isActive ? 'active' : ''}`
                 }
               >
                 {label}
@@ -101,26 +95,40 @@ const Header = () => {
           <div className="flex items-center gap-1 shrink-0 ml-auto">
             <button title="Login"
               className="glass-action-btn flex flex-col items-center gap-0.5 px-3 py-2"
-              style={{ color: '#6B7280' }}>
+              style={{ color: 'var(--c-silver)' }}>
               <RiLoginBoxFill className="text-xl" />
               <span className="text-[10px] font-medium">Login</span>
             </button>
             <button title="Sign Up"
               className="glass-action-btn flex flex-col items-center gap-0.5 px-3 py-2"
-              style={{ color: '#6B7280' }}>
+              style={{ color: 'var(--c-silver)' }}>
               <BsPersonPlus className="text-xl" />
               <span className="text-[10px] font-medium">Sign Up</span>
             </button>
             <button title="Cart"
               className="glass-action-btn relative flex flex-col items-center gap-0.5 px-3 py-2"
-              style={{ color: '#6B7280' }}>
+              style={{ color: 'var(--c-silver)' }}>
               <BsCart className="text-xl" />
-              <span className="absolute top-1 right-1.5 text-[#1F2937] text-[9px] font-bold
+              <span className="absolute top-1 right-1.5 text-[9px] font-bold
                                w-4 h-4 rounded-full flex items-center justify-center"
-                style={{ background: '#D4AF37' }}>
+                style={{ background: 'var(--c-accent)', color: '#1F2937' }}>
                 0
               </span>
               <span className="text-[10px] font-medium">Cart</span>
+            </button>
+            <button
+              type="button"
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+              onClick={toggleTheme}
+              className="glass-action-btn w-10 h-10 flex items-center justify-center"
+              style={{
+                color: 'var(--c-dark)',
+                background: 'var(--c-off-white)',
+                border: '1px solid var(--c-border)',
+              }}
+            >
+              {theme === 'light' ? <BsMoonStars className="text-lg" /> : <BsSun className="text-lg" />}
             </button>
           </div>
 

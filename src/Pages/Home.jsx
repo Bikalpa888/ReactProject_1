@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   BsArrowRight, BsLightningFill, BsShieldCheck, BsTruck, BsHeadset,
@@ -62,16 +61,16 @@ export default function Home() {
           style={{ background: 'linear-gradient(160deg, rgba(18,18,18,0.72) 0%, rgba(18,18,18,0.55) 60%, rgba(18,18,18,0.80) 100%)' }}
         />
 
-        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto" style={{ color: '#F8F9FA' }}>
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto" style={{ color: 'var(--c-hero-text)' }}>
           <p className="text-xs uppercase tracking-[0.4em] font-semibold mb-6"
-            style={{ color: '#D4AF37', letterSpacing: '0.35em' }}>
+            style={{ color: 'var(--c-accent)', letterSpacing: '0.35em' }}>
             Premium Performance Parts
           </p>
 
           <h1 className="font-black tracking-tight leading-[1.04] mb-6"
             style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)' }}>
             Built for Speed.<br />
-            <span style={{ color: '#D4AF37' }}>Engineered to Race.</span>
+            <span style={{ color: 'var(--c-accent)' }}>Engineered to Race.</span>
           </h1>
 
           <p className="text-lg max-w-lg mx-auto mb-10 leading-relaxed"
@@ -100,13 +99,13 @@ export default function Home() {
       </section>
 
       {/* ── STATS STRIP ──────────────────────────────── */}
-      <section style={{ background: '#1F2937' }}>
+      <section style={{ background: 'var(--c-dark-section)' }}>
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-4">
           {stats.map((s, i) => (
             <div key={i} className="flex flex-col items-center py-9 px-4"
               style={{ borderRight: i < 3 ? '1px solid rgba(248,249,250,0.08)' : 'none' }}>
               <span className="text-2xl sm:text-3xl font-extrabold"
-                style={{ color: '#F8F9FA' }}>{s.value}</span>
+                style={{ color: 'var(--c-dark-section-text)' }}>{s.value}</span>
               <span className="text-[10px] uppercase tracking-widest mt-1.5"
                 style={{ color: 'rgba(248,249,250,0.45)' }}>{s.label}</span>
             </div>
@@ -115,13 +114,13 @@ export default function Home() {
       </section>
 
       {/* ── CATEGORIES ───────────────────────────────── */}
-      <section style={{ background: '#FFFFFF' }}>
+      <section style={{ background: 'var(--c-white)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="mb-12 reveal">
             <p className="text-xs uppercase tracking-[0.32em] font-semibold mb-2"
-              style={{ color: '#D4AF37' }}>Browse</p>
+              style={{ color: 'var(--c-accent)' }}>Browse</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold"
-              style={{ color: '#1F2937' }}>Shop by Category</h2>
+              style={{ color: 'var(--c-dark)' }}>Shop by Category</h2>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
@@ -141,13 +140,13 @@ export default function Home() {
               >
                 <div className="glass-content">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: 'rgba(212,175,55,0.10)', border: '1px solid rgba(212,175,55,0.20)' }}>
-                    <Icon className="text-xl" style={{ color: '#D4AF37' }} />
+                    style={{ background: 'var(--c-accent-soft)', border: '1px solid var(--c-accent-border)' }}>
+                    <Icon className="text-xl" style={{ color: 'var(--c-accent)' }} />
                   </div>
-                  <h3 className="font-bold text-sm mb-1" style={{ color: '#1F2937' }}>{label}</h3>
-                  <p className="text-xs mb-3" style={{ color: '#6B7280' }}>{desc}</p>
+                  <h3 className="font-bold text-sm mb-1" style={{ color: 'var(--c-dark)' }}>{label}</h3>
+                  <p className="text-xs mb-3" style={{ color: 'var(--c-silver)' }}>{desc}</p>
                   <span className="text-xs font-semibold flex items-center gap-1"
-                    style={{ color: '#D4AF37' }}>
+                    style={{ color: 'var(--c-accent)' }}>
                     {count} items <BsArrowRight />
                   </span>
                 </div>
@@ -158,19 +157,19 @@ export default function Home() {
       </section>
 
       {/* ── HOT DEALS ────────────────────────────────── */}
-      <section style={{ background: '#F8F9FA' }}>
+      <section style={{ background: 'var(--c-off-white)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="flex items-end justify-between mb-12 reveal">
             <div>
               <p className="text-xs uppercase tracking-[0.32em] font-semibold mb-2"
-                style={{ color: '#D4AF37' }}>Curated Picks</p>
+                style={{ color: 'var(--c-accent)' }}>Curated Picks</p>
               <h2 className="text-3xl sm:text-4xl font-extrabold"
-                style={{ color: '#1F2937' }}>Hot Right Now</h2>
+                style={{ color: 'var(--c-dark)' }}>Hot Right Now</h2>
             </div>
             <button className="text-sm font-medium flex items-center gap-1.5 transition-colors duration-200"
-              style={{ color: '#6B7280' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#1F2937'}
-              onMouseLeave={e => e.currentTarget.style.color = '#6B7280'}>
+              style={{ color: 'var(--c-silver)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--c-dark)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--c-silver)'}>
               View all <BsArrowRight />
             </button>
           </div>
@@ -205,11 +204,11 @@ export default function Home() {
                 </div>
                 <div className="glass-content p-4">
                   <p className="text-[10px] uppercase tracking-wider mb-1 font-medium"
-                    style={{ color: '#D4AF37' }}>{p.brand}</p>
+                    style={{ color: 'var(--c-accent)' }}>{p.brand}</p>
                   <h3 className="font-semibold text-sm mb-3 leading-snug"
-                    style={{ color: '#1F2937' }}>{p.name}</h3>
+                    style={{ color: 'var(--c-dark)' }}>{p.name}</h3>
                   <div className="flex items-center justify-between">
-                    <span className="font-extrabold text-base" style={{ color: '#1F2937' }}>{p.price}</span>
+                    <span className="font-extrabold text-base" style={{ color: 'var(--c-dark)' }}>{p.price}</span>
                     <button className="glass-btn text-[11px] px-3 py-1.5 rounded-lg">
                       Add to Cart
                     </button>
@@ -222,13 +221,13 @@ export default function Home() {
       </section>
 
       {/* ── GALLERY ──────────────────────────────────── */}
-      <section style={{ background: '#FFFFFF' }}>
+      <section style={{ background: 'var(--c-white)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="mb-10 reveal">
             <p className="text-xs uppercase tracking-[0.32em] font-semibold mb-2"
-              style={{ color: '#D4AF37' }}>Our Fleet</p>
+              style={{ color: 'var(--c-accent)' }}>Our Fleet</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold"
-              style={{ color: '#1F2937' }}>Battle-Tested Machines</h2>
+              style={{ color: 'var(--c-dark)' }}>Battle-Tested Machines</h2>
           </div>
           <div className="liquid-glass rounded-3xl overflow-hidden reveal">
             <div className="glass-content">
@@ -239,13 +238,13 @@ export default function Home() {
       </section>
 
       {/* ── WHY LETSRACE ─────────────────────────────── */}
-      <section style={{ background: '#F8F9FA' }}>
+      <section style={{ background: 'var(--c-off-white)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center mb-14 reveal">
             <p className="text-xs uppercase tracking-[0.32em] font-semibold mb-2"
-              style={{ color: '#D4AF37' }}>The LETSRACE Difference</p>
+              style={{ color: 'var(--c-accent)' }}>The LETSRACE Difference</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold"
-              style={{ color: '#1F2937' }}>Why Drivers Choose Us</h2>
+              style={{ color: 'var(--c-dark)' }}>Why Drivers Choose Us</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map(({ Icon, title, desc }, i) => (
@@ -267,11 +266,11 @@ export default function Home() {
               >
                 <div className="glass-content">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: 'rgba(212,175,55,0.10)', border: '1px solid rgba(212,175,55,0.20)' }}>
-                    <Icon className="text-lg" style={{ color: '#D4AF37' }} />
+                    style={{ background: 'var(--c-accent-soft)', border: '1px solid var(--c-accent-border)' }}>
+                    <Icon className="text-lg" style={{ color: 'var(--c-accent)' }} />
                   </div>
-                  <h3 className="font-bold text-sm mb-2" style={{ color: '#1F2937' }}>{title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{desc}</p>
+                  <h3 className="font-bold text-sm mb-2" style={{ color: 'var(--c-dark)' }}>{title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--c-silver)' }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -282,7 +281,7 @@ export default function Home() {
       {/* ── CTA ──────────────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ background: '#1F2937' }}
+        style={{ background: 'var(--c-dark-section)' }}
       >
         <img
           src="/2.jpg"
@@ -292,11 +291,11 @@ export default function Home() {
         />
         <div className="relative z-10 max-w-3xl mx-auto px-4 py-28 text-center reveal">
           <h2 className="text-4xl sm:text-5xl font-black mb-5 leading-tight"
-            style={{ color: '#F8F9FA' }}>
+            style={{ color: 'var(--c-dark-section-text)' }}>
             Ready to Upgrade<br />Your Ride?
           </h2>
           <p className="text-base mb-10 leading-relaxed"
-            style={{ color: 'rgba(248,249,250,0.55)' }}>
+            style={{ color: 'var(--c-dark-section-muted)' }}>
             Every second on the track counts. Get the parts that make the difference.
           </p>
           <button className="btn-light px-12 py-4 rounded-xl font-bold text-base inline-flex items-center gap-2.5">

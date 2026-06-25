@@ -5,9 +5,54 @@
   --c-off-white: #F8F9FA;
   --c-dark:      #1F2937;
   --c-silver:    #6B7280;
+  --c-muted:     #9CA3AF;
   --c-accent:    #D4AF37;
+  --c-hero-text: #F8F9FA;
+  --c-dark-section: #1F2937;
+  --c-dark-section-text: #F8F9FA;
+  --c-dark-section-muted: rgba(248,249,250,0.55);
+  --c-primary-bg: #1F2937;
+  --c-primary-text: #FFFFFF;
+  --c-light-btn-bg: #FFFFFF;
+  --c-light-btn-text: #1F2937;
+  --c-border: rgba(31, 41, 55, 0.08);
+  --c-border-strong: rgba(31, 41, 55, 0.14);
+  --c-input-border: rgba(31, 41, 55, 0.10);
+  --c-action-hover: rgba(31, 41, 55, 0.06);
+  --c-accent-soft: rgba(212, 175, 55, 0.10);
+  --c-accent-border: rgba(212, 175, 55, 0.20);
+  --c-badge-bg: rgba(255, 255, 255, 0.95);
+  --shadow-header: 0 1px 8px rgba(31, 41, 55, 0.06);
+  --shadow-header-scrolled: 0 2px 20px rgba(31,41,55,0.13), 0 1px 4px rgba(31,41,55,0.08);
   --shadow-card: 0 1px 3px rgba(31,41,55,0.04), 0 4px 18px rgba(31,41,55,0.08);
   --shadow-hover: 0 4px 24px rgba(31,41,55,0.13);
+}
+
+:root[data-theme="dark"] {
+  --c-white:     #10151F;
+  --c-off-white: #151C28;
+  --c-dark:      #F5F7FA;
+  --c-silver:    #B2BAC8;
+  --c-muted:     #8F99AA;
+  --c-hero-text: #F8F9FA;
+  --c-dark-section: #0B1018;
+  --c-dark-section-text: #F8F9FA;
+  --c-dark-section-muted: rgba(248,249,250,0.62);
+  --c-primary-bg: #D4AF37;
+  --c-primary-text: #10151F;
+  --c-light-btn-bg: #F8F9FA;
+  --c-light-btn-text: #10151F;
+  --c-border: rgba(248, 249, 250, 0.08);
+  --c-border-strong: rgba(248, 249, 250, 0.16);
+  --c-input-border: rgba(248, 249, 250, 0.12);
+  --c-action-hover: rgba(248, 249, 250, 0.07);
+  --c-accent-soft: rgba(212, 175, 55, 0.14);
+  --c-accent-border: rgba(212, 175, 55, 0.30);
+  --c-badge-bg: rgba(21, 28, 40, 0.94);
+  --shadow-header: 0 1px 12px rgba(0, 0, 0, 0.26);
+  --shadow-header-scrolled: 0 2px 24px rgba(0,0,0,0.38), 0 1px 5px rgba(0,0,0,0.24);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.20), 0 8px 24px rgba(0,0,0,0.24);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.34);
 }
 
 html { height: 100%; }
@@ -16,6 +61,7 @@ body {
   min-height: 100%;
   background: var(--c-white);
   color: var(--c-dark);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 /* ══════════════════════════════════════════════
@@ -24,7 +70,7 @@ body {
 .liquid-glass {
   position: relative;
   background: var(--c-white);
-  border: 1px solid rgba(31, 41, 55, 0.07);
+  border: 1px solid var(--c-border);
   box-shadow: var(--shadow-card);
   overflow: hidden;
 }
@@ -37,7 +83,7 @@ body {
 
 /* ── Header ── */
 header.liquid-glass {
-  background: rgba(255, 255, 255, 0.97);
+  background: color-mix(in srgb, var(--c-white) 94%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 0;
@@ -45,8 +91,8 @@ header.liquid-glass {
   box-shadow: none;
 }
 .glass-header {
-  border-bottom: 1px solid rgba(31, 41, 55, 0.08);
-  box-shadow: 0 1px 8px rgba(31, 41, 55, 0.06);
+  border-bottom: 1px solid var(--c-border);
+  box-shadow: var(--shadow-header);
 }
 
 /* ── Footer ── */
@@ -56,12 +102,12 @@ footer.liquid-glass {
   border: none;
   box-shadow: none;
 }
-.glass-footer { border-top: 1px solid rgba(31, 41, 55, 0.08); }
+.glass-footer { border-top: 1px solid var(--c-border); }
 
 /* ── Input pill ── */
 .glass-input {
   background: var(--c-off-white);
-  border: 1.5px solid rgba(31, 41, 55, 0.10);
+  border: 1.5px solid var(--c-input-border);
   border-radius: 50px;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
@@ -78,8 +124,8 @@ footer.liquid-glass {
 /* Primary — charcoal bg, white text → hover gold */
 .glass-btn {
   position: relative;
-  background: var(--c-dark);
-  color: #FFFFFF;
+  background: var(--c-primary-bg);
+  color: var(--c-primary-text);
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -96,8 +142,8 @@ footer.liquid-glass {
 
 /* Light — white bg, dark text → hover gold (for dark-bg sections) */
 .btn-light {
-  background: var(--c-white);
-  color: var(--c-dark);
+  background: var(--c-light-btn-bg);
+  color: var(--c-light-btn-text);
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -132,7 +178,7 @@ footer.liquid-glass {
 .btn-secondary {
   background: transparent;
   color: var(--c-dark);
-  border: 1.5px solid rgba(31, 41, 55, 0.22);
+  border: 1.5px solid var(--c-border-strong);
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease,
@@ -150,7 +196,19 @@ footer.liquid-glass {
   border-radius: 8px;
   transition: background 0.2s ease, color 0.2s ease;
 }
-.glass-action-btn:hover { background: rgba(31, 41, 55, 0.06); }
+.glass-action-btn:hover { background: var(--c-action-hover); }
+
+.theme-nav-link,
+.theme-link {
+  color: var(--c-silver);
+}
+.theme-nav-link:hover,
+.theme-link:hover {
+  color: var(--c-dark);
+}
+.theme-nav-link.active {
+  color: var(--c-accent);
+}
 
 /* ══════════════════════════════════════════════
    SCROLL REVEAL
